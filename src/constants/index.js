@@ -1,6 +1,4 @@
-
 import {
-  logo,
   backend,
   creator,
   mobile,
@@ -16,7 +14,6 @@ import {
   express,
   aws,
   mui,
-  
   gsap,
   framer,
   figma,
@@ -29,27 +26,24 @@ import {
   redux,
   tailwind,
   threejs,
-  firstTestimonial,
-  secondTestimonial,
-  thirdTestimonial,
+  // Remove testimonial images references
 } from '../assets'
 
-
 // Import Tekisky separately
-import tekisky from "../assets/company/tekisky.png";
-
+import mesinkira from "../assets/company/mesinkira.png";
 
 export const navLinks = [
-
-
   {
     id: "about",
     title: "About",
-    
   },
   {
     id: "work",
     title: "Work",
+  },
+  {
+    id: "study",
+    title: "Skills",
   },
   {
     id: "contact",
@@ -59,57 +53,55 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Full-Stack Developer",
-    icon: web,
-  },
-  {
-    title: "Frontend Developer",
-    icon: mobile,
-  },
-  {
     title: "Backend Developer",
     icon: backend,
   },
   {
-    title: "Ui UX Designer",
+    title: "Full-Stack Developer",
+    icon: web,
+  },
+  {
+    title: "Web Developer",
+    icon: mobile,
+  },
+  {
+    title: "Software Developer",
     icon: creator,
   },
 ];
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
+    name: "Node.js",
+    icon: nodejs,
   },
   {
-    name: "CSS 3",
-    icon: css,
+    name: "Express.js",
+    icon: express,
   },
   {
     name: "JavaScript",
     icon: javascript,
   },
   {
+    name: "MongoDB",
+    icon: mongodb,
+  },
+  {
+    name: "MySQL",
+    icon: mysql,
+  },
+  {
+    name: "AWS",
+    icon: aws,
+  },
+  {
+    name: "Git",
+    icon: git,
+  },
+  {
     name: "React JS",
     icon: reactjs,
-  },
-  {
-    name: "gsap",
-    icon: gsap,
-  },
-  {
-    name: "framer",
-    icon: framer,
-  },
-
- 
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "figma",
-    icon: figma,
   },
   {
     name: "Redux Toolkit",
@@ -120,149 +112,112 @@ const technologies = [
     icon: tailwind,
   },
   {
-    name: "Material Ui",
+    name: "HTML 5",
+    icon: html,
+  },
+  {
+    name: "CSS 3",
+    icon: css,
+  },
+  {
+    name: "Material UI",
     icon: mui,
   },
   {
-    name: "Node JS",
-    icon: nodejs,
+    name: "Three JS",
+    icon: threejs,
   },
-  {
-    name: "Express Js",
-    icon: express,
-  },
-  {
-    name: "AWS",
-    icon: aws,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "MySql",
-    icon: mysql,
-  },
-
-  {
-    name: "git",
-    icon: git,
-  },
- 
-
 ];
 
 const experiences = [
   {
-    title: "Full-Stack Developer",
-    company_name: "Tekisky",
-    icon: tekisky,
+    title: "Software Engineer (Intern)",
+    company_name: "Mesinkira Sdn Bhd",
+    icon: mesinkira,
     iconBg: "#383E56",
-    date: "Jan 2023 - present",
+    date: "April 2025 - present",
     points: [
-      "Developing and maintaining web applications using MERN technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed and maintained backend features using Laravel PHP to support digital financial solutions for MSMEs.",
+      "Integrated APIs for card payments (Visa/Mastercard) and e-wallet systems using NFC technology.",
+      "Collaborated with the development team to improve business management tools and accounting features.",
+      "Assisted in database design and optimization to ensure data accuracy and system performance.",
+      "Optimizing API performance through caching strategies, database indexing, and query optimization.Participated in testing, debugging, and deployment processes for internal tools and client-facing services.",
     ],
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Huzaif proved me wrong.",
-    name: "MD Mustaqeem",
-    designation: "Ecommerce",
-    company: "QuickMart",
-    image: firstTestimonial,
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Huzaif does.",
-    name: "Abdul Raheman",
-    designation: "Ecommerce Business",
-    company: "justbuyz",
-    image: secondTestimonial,
-  },
-  {
-    testimonial:
-      "After Huzaif optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "James Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: thirdTestimonial,
-  },
-];
-
+// Replace testimonials with backend projects
 const projects = [
   {
-    name: "Tekisky Mart",
+    name: "Tekisky Mart API",
     description:
-      "Tekisky Mart is a web-based platform that allows users to search, explore, and purchase a wide range of products from various providers, offering a seamless and efficient shopping experience.",
+      "A comprehensive RESTful API built with Node.js and Express that powers an e-commerce platform. Features include user authentication, product management, order processing, and payment integration.",
     tags: [
       {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "white-text-gradient",
-      },
-      {
-        name: "node",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "mongodb",
+        name: "nodejs",
         color: "green-text-gradient",
-      },
- 
-    ],
-    image: project2,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "GearXpert",
-    description:
-      "GearXpert is your ultimate destination for premium auto parts and accessories, Whether you're an automobile enthusiast or a professional, find everything you need to upgrade, repair.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "emailJs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Gsap",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: gearXpert,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "GoGroove-Ecommerce",
-    description:
-      "Go-Groove is your ultimate destination for premium products across various categories. Whether you're a savvy shopper or a professional, enhance, and simplify your lifestyle—all in one place!",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
       },
       {
         name: "express",
         color: "white-text-gradient",
       },
       {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "jwt",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: project2,
+    source_code_link: "https://github.com/",
+  },
+  {
+    name: "GearXpert Backend",
+    description:
+      "A scalable backend system for an automotive parts marketplace with features like inventory management, vendor API integration, and real-time stock updates using WebSockets.",
+    tags: [
+      {
         name: "node",
         color: "green-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "mysql",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "redis",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "docker",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: gearXpert,
+    source_code_link: "https://github.com/",
+  },
+  {
+    name: "GoGroove API Gateway",
+    description:
+      "A microservices API gateway that handles routing, authentication, rate limiting, and load balancing for multiple backend services, enabling a scalable architecture for an e-commerce platform.",
+    tags: [
+      {
+        name: "nodejs",
         color: "green-text-gradient",
+      },
+      {
+        name: "express",
+        color: "white-text-gradient",
+      },
+      {
+        name: "aws",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "microservices",
+        color: "pink-text-gradient",
       },
     ],
     image: project3,
@@ -270,4 +225,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, experiences, projects };
