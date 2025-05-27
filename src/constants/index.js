@@ -12,20 +12,20 @@ import {
   project3,
   mysql,
   express,
-  aws,
-  mui,
+  laravel,
+  java,
   gsap,
   framer,
   figma,
   git,
   html,
   javascript,
-  mongodb,
+  php,
   nodejs,
   reactjs,
-  redux,
+  cplusplus,
   tailwind,
-  threejs,
+  csharp,
   // Remove testimonial images references
 } from '../assets'
 
@@ -76,24 +76,20 @@ const technologies = [
     icon: nodejs,
   },
   {
-    name: "Express.js",
-    icon: express,
-  },
-  {
     name: "JavaScript",
     icon: javascript,
   },
   {
-    name: "MongoDB",
-    icon: mongodb,
+    name: "Php",
+    icon: php,
   },
   {
     name: "MySQL",
     icon: mysql,
   },
   {
-    name: "AWS",
-    icon: aws,
+    name: "Laravel",
+    icon: laravel,
   },
   {
     name: "Git",
@@ -104,8 +100,8 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "C++",
+    icon: cplusplus,
   },
   {
     name: "Tailwind CSS",
@@ -120,12 +116,12 @@ const technologies = [
     icon: css,
   },
   {
-    name: "Material UI",
-    icon: mui,
+    name: "Java",
+    icon: java,
   },
   {
-    name: "Three JS",
-    icon: threejs,
+    name: "C#",
+    icon: csharp,
   },
 ];
 
@@ -162,8 +158,8 @@ const projects = [
         color: "white-text-gradient",
       },
       {
-        name: "mongodb",
-        color: "green-text-gradient",
+        name: "php",
+        color: "blue-text-gradient",
       },
       {
         name: "jwt",
@@ -212,7 +208,7 @@ const projects = [
         color: "white-text-gradient",
       },
       {
-        name: "aws",
+        name: "laravel",
         color: "blue-text-gradient",
       },
       {
