@@ -47,10 +47,10 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I am a Backend Developer specializing in building scalable and efficient web applications using Laravel, PHP, MySQL, and Livewire. 
-        I have strong experience in developing robust backend systems, designing APIs, and ensuring seamless integration with frontend technologies like React and Flux architecture. 
-        Passionate about backend engineering, clean code practices, and delivering high-quality software solutions,
-        I am committed to bridging backend services with dynamic user interfaces for optimal performance and user experience.
+        I am a Computer Science graduate currently pursuing my Bachelor's degree at Universiti Selangor (UNISEL) with hands-on software development experience and a strong foundation in full-stack web development. 
+        Currently gaining practical industry experience as a Software Engineer Intern at Mesinkira Sdn Bhd, where I develop scalable applications using Laravel PHP, integrate payment APIs, and optimize database performance. 
+        Proven ability to collaborate effectively in team environments and passionate about creating efficient, secure, and user-friendly software solutions. 
+        I have achieved recognition including 2nd place in my Final Year Project for developing a Forensic Management System, and have led various educational initiatives to promote digital literacy.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

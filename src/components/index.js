@@ -7,6 +7,7 @@ import Experience from './Experience';
 import Works from './Works';
 import Contact from './Contact';
 import StudyExperiences from './StudyExperiences'; // Add this line
+import Study from './Study'; // Add the new Study component
 
 export {
   Hero,
@@ -17,6 +18,7 @@ export {
   Works,
   Contact,
   StudyExperiences, // Add this line
+  Study, // Add the new Study component
   EarthCanvas,
   BallCanvas,
   ComputersCanvas,

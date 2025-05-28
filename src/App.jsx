@@ -1,7 +1,7 @@
 import { HashRouter } from "react-router-dom";
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, StudyExperiences } from "./components";
-// Remove the problematic import
+import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, StudyExperiences, Study } from "./components";
 import Footer from "./components/Footer";
+
 const App = () => {
   return (
     <HashRouter>
@@ -11,9 +11,10 @@ const App = () => {
           <Hero />
         </div>
         <About />
+        <Study />
         <Experience />
         <Tech />
-        <StudyExperiences /> {/* Added the StudyExperiences component */}
+        <StudyExperiences />
         <Works />
         <div className='relative z-0'>
           <Contact />
@@ -24,4 +25,5 @@ const App = () => {
     </HashRouter>
   );
 }
+
 export default App;
