@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -57,91 +56,79 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Step 1: Check with Arcjet protection first
-      console.log("🛡️ Checking Arcjet protection...");
+      console.log("🚀 Sending form data to protected API...");
       
-      const protectionResponse = await fetch('/api/check-protection', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          action: 'contact_form_submit'
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
         }),
       });
 
-      if (!protectionResponse.ok) {
-        const protectionData = await protectionResponse.json();
-        console.log("🚫 Arcjet blocked the request:", protectionData);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("✅ Form submitted successfully:", data);
+        setSubmitStatus({ 
+          type: 'success', 
+          message: data.message || 'Your message has been sent successfully!',
+          details: `Email sent via ${data.service} at ${new Date(data.timestamp).toLocaleTimeString()}`
+        });
+
+        // Reset form
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+
+        // Auto-hide success message after 7 seconds
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 7000);
+
+      } else {
+        console.error("❌ API Error:", data);
         
-        let userMessage = protectionData.error || 'Request blocked by security system';
-        if (protectionData.type === 'rate_limit') {
+        // Handle specific error types
+        let userMessage = data.error || 'Failed to send message. Please try again.';
+        let autoHideDelay = 8000;
+        
+        if (data.type === 'rate_limit') {
           userMessage = "You're sending messages too quickly. Please wait a moment before trying again.";
+          autoHideDelay = 10000;
+        } else if (data.type === 'bot_detected') {
+          userMessage = "Security check failed. Please try again or contact me directly.";
+        } else if (data.type === 'validation_error') {
+          autoHideDelay = 5000;
         }
         
         setSubmitStatus({ 
           type: 'error', 
           message: userMessage,
-          details: `Security check: ${protectionData.type}`
+          details: data.type ? `Error type: ${data.type}` : undefined
         });
-        return;
+
+        // Auto-hide error message
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, autoHideDelay);
       }
-
-      console.log("✅ Arcjet protection passed, sending email...");
-
-      // Step 2: Send email using client-side EmailJS (original working method)
-      const result = await emailjs.send(
-        "service_q9ggjli",
-        "template_88kl7z5",
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          time: new Date().toLocaleString(),
-          from_name: form.name,
-          from_email: form.email,
-          to_name: "Agathian",
-          to_email: "agathianmathivanan@gmail.com",
-          reply_to: form.email,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      );
-
-      console.log("✅ EmailJS Success:", result);
-
-      setSubmitStatus({ 
-        type: 'success', 
-        message: 'Your message has been sent successfully! I\'ll get back to you soon.',
-        details: `Email sent via EmailJS at ${new Date().toLocaleTimeString()}`
-      });
-
-      // Reset form
-      setForm({
-        name: "",
-        email: "",
-        message: "",
-      });
-
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 7000);
 
     } catch (error) {
-      console.error("❌ Error:", error);
-      
-      let errorMessage = 'Failed to send message. Please try again.';
-      if (error.text) {
-        errorMessage = `EmailJS Error: ${error.text}`;
-      } else if (error.message) {
-        errorMessage = error.message;
-      }
-      
+      console.error("❌ Network Error:", error);
       setSubmitStatus({ 
         type: 'error', 
-        message: errorMessage,
+        message: 'Network error. Please check your connection and try again.',
         details: 'If the problem persists, you can reach me at agathianmathivanan@gmail.com'
       });
 
+      // Auto-hide error message after 10 seconds
       setTimeout(() => {
         setSubmitStatus(null);
       }, 10000);
