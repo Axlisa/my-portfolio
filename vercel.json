@@ -4,12 +4,14 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "functions": {
-    "index.ts": {
-      "runtime": "edge"
+    "api/check-protection.ts": {
+      "runtime": "nodejs18.x"
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/index.ts" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "env": {
+    "ARCJET_KEY": "@arcjet-key"
+  }
 }

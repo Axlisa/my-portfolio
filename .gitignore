@@ -10,7 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-# Keep .env.local for Arcjet key (but be careful with sensitive data)
+# Keep .env.local for development
 # *.local
 
 # Editor directories and files
@@ -29,3 +29,9 @@ dist-ssr
 # vscode
 .vscode
 .vercel
+
+# Development/test files
+debug-server.ts
+test-server.ts
+*.sh
+test-emailjs.js

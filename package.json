@@ -5,13 +5,11 @@
   "type": "module",
   "deploy": "gh-pages --repo https://github.com/Axlisa/my-portfolio.git -d dist",
   "scripts": {
-    "dev": "npm run dev:concurrent",
+    "dev": "vite",
+    "dev:full": "npm run dev:concurrent",
     "dev:frontend": "vite",
     "dev:backend": "bun --watch run index.ts",
     "dev:concurrent": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "test": "npm run test:concurrent",
-    "test:server": "bun --watch run test-server.ts",
-    "test:concurrent": "concurrently \"npm run test:server\" \"npm run dev:frontend\"",
     "build": "vite build",
     "preview": "vite preview",
     "start": "bun run index.ts",
@@ -21,8 +19,7 @@
     "deploy:vercel": "vercel"
   },
   "dependencies": {
-    "@arcjet/bun": "^1.0.0-beta.7",
-    "@arcjet/inspect": "^1.0.0-beta.7",
+    "@arcjet/next": "^1.0.0-beta.7",
     "@emailjs/browser": "^3.10.0",
     "@gsap/react": "^2.1.2",
     "@heroicons/react": "^2.2.0",
