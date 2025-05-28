@@ -48,33 +48,6 @@ const Contact = () => {
     return true;
   };
 
-  const testAPI = async () => {
-    try {
-      console.log("🧪 Testing API...");
-      const response = await fetch('/api/test');
-      console.log("🧪 Test Response Status:", response.status);
-      
-      const text = await response.text();
-      console.log("🧪 Test Response Text:", text);
-      
-      const data = JSON.parse(text);
-      console.log("🧪 Test Response JSON:", data);
-      
-      setSubmitStatus({
-        type: 'success',
-        message: 'API Test Successful!',
-        details: `Response: ${JSON.stringify(data, null, 2)}`
-      });
-    } catch (error) {
-      console.error("🧪 API Test Failed:", error);
-      setSubmitStatus({
-        type: 'error',
-        message: 'API Test Failed',
-        details: error.message
-      });
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -84,71 +57,9 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Step 1: Check with Arcjet protection first
-      console.log("🛡️ Checking Arcjet protection...");
-      
-      const protectionResponse = await fetch('/api/check-protection-simple', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'contact_form_submit'
-        }),
-      });
+      // Skip API protection check for now - just use EmailJS directly
+      console.log("📧 Sending email directly via EmailJS...");
 
-      console.log("🔍 Protection Response Status:", protectionResponse.status);
-      console.log("🔍 Protection Response Headers:", Object.fromEntries(protectionResponse.headers.entries()));
-      
-      const responseText = await protectionResponse.text();
-      console.log("🔍 Raw Response:", responseText);
-
-      if (!protectionResponse.ok) {
-        let protectionData;
-        try {
-          protectionData = JSON.parse(responseText);
-        } catch (e) {
-          console.error("❌ Failed to parse error response as JSON:", responseText);
-          setSubmitStatus({ 
-            type: 'error', 
-            message: 'API returned invalid response. Please try again.',
-            details: `Status: ${protectionResponse.status}, Response: ${responseText.substring(0, 100)}...`
-          });
-          return;
-        }
-        console.log("🚫 API blocked the request:", protectionData);
-        
-        let userMessage = protectionData.error || 'Request blocked by security system';
-        if (protectionData.type === 'rate_limit') {
-          userMessage = "You're sending messages too quickly. Please wait a moment before trying again.";
-        }
-        
-        setSubmitStatus({ 
-          type: 'error', 
-          message: userMessage,
-          details: `Security check: ${protectionData.type}`
-        });
-        return;
-      }
-
-      // Parse successful response
-      let protectionData;
-      try {
-        protectionData = JSON.parse(responseText);
-        console.log("✅ Protection API response:", protectionData);
-      } catch (e) {
-        console.error("❌ Failed to parse success response as JSON:", responseText);
-        setSubmitStatus({ 
-          type: 'error', 
-          message: 'API returned invalid response format.',
-          details: `Response: ${responseText.substring(0, 100)}...`
-        });
-        return;
-      }
-
-      console.log("✅ API protection passed, sending email...");
-
-      // Step 2: Send email using client-side EmailJS (original working method)
       const result = await emailjs.send(
         "service_q9ggjli",
         "template_88kl7z5",
@@ -218,7 +129,7 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
         <p className="text-secondary text-[14px] mt-4">
-          🛡️ Protected by Arcjet • 📧 Powered by EmailJS
+          📧 Powered by EmailJS • ⚡ Fast & Reliable
         </p>
 
         <form
@@ -275,15 +186,6 @@ const Contact = () => {
             }`}
           >
             {loading ? "Sending..." : "Send Message"}
-          </button>
-
-          {/* Test API Button */}
-          <button
-            type='button'
-            onClick={testAPI}
-            className="py-2 px-6 rounded-lg outline-none w-fit text-white font-medium bg-blue-600 hover:bg-blue-700 transition-all duration-200"
-          >
-            🧪 Test API
           </button>
 
           {/* Enhanced Status Messages */}

@@ -1,5 +1,4 @@
-// Vercel Serverless Function - Protection Check
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
   console.log("🔍 Protection API called");
   
   // Set CORS headers
@@ -27,17 +26,17 @@ export default function handler(req, res) {
     console.log("🔍 Processing protection check");
     
     // Get user info
-    const userAgent = req.headers['user-agent'] || '';
-    const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
+    var userAgent = req.headers['user-agent'] || '';
+    var ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
     
     console.log("🔍 User Agent:", userAgent.substring(0, 50));
     console.log("🔍 IP:", ip);
     
     // Simple bot detection
-    const suspiciousBots = ['bot', 'curl', 'wget', 'python', 'scrapy'];
-    const isBot = suspiciousBots.some(bot => 
-      userAgent.toLowerCase().includes(bot)
-    );
+    var suspiciousBots = ['bot', 'curl', 'wget', 'python', 'scrapy'];
+    var isBot = suspiciousBots.some(function(bot) {
+      return userAgent.toLowerCase().includes(bot);
+    });
     
     if (isBot) {
       console.log("🚫 Bot detected");
@@ -65,4 +64,4 @@ export default function handler(req, res) {
       details: error.message
     });
   }
-}
+};
