@@ -3,15 +3,7 @@
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "functions": {
-    "api/check-protection.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "env": {
-    "ARCJET_KEY": "@arcjet-key"
-  }
+  ]
 }

@@ -60,7 +60,7 @@ const Contact = () => {
       // Step 1: Check with Arcjet protection first
       console.log("🛡️ Checking Arcjet protection...");
       
-      const protectionResponse = await fetch('/api/check-protection', {
+      const protectionResponse = await fetch('/api/check-protection-simple', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
