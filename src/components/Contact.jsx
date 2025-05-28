@@ -48,6 +48,33 @@ const Contact = () => {
     return true;
   };
 
+  const testAPI = async () => {
+    try {
+      console.log("🧪 Testing API...");
+      const response = await fetch('/api/test');
+      console.log("🧪 Test Response Status:", response.status);
+      
+      const text = await response.text();
+      console.log("🧪 Test Response Text:", text);
+      
+      const data = JSON.parse(text);
+      console.log("🧪 Test Response JSON:", data);
+      
+      setSubmitStatus({
+        type: 'success',
+        message: 'API Test Successful!',
+        details: `Response: ${JSON.stringify(data, null, 2)}`
+      });
+    } catch (error) {
+      console.error("🧪 API Test Failed:", error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'API Test Failed',
+        details: error.message
+      });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -70,9 +97,26 @@ const Contact = () => {
         }),
       });
 
+      console.log("🔍 Protection Response Status:", protectionResponse.status);
+      console.log("🔍 Protection Response Headers:", Object.fromEntries(protectionResponse.headers.entries()));
+      
+      const responseText = await protectionResponse.text();
+      console.log("🔍 Raw Response:", responseText);
+
       if (!protectionResponse.ok) {
-        const protectionData = await protectionResponse.json();
-        console.log("🚫 Arcjet blocked the request:", protectionData);
+        let protectionData;
+        try {
+          protectionData = JSON.parse(responseText);
+        } catch (e) {
+          console.error("❌ Failed to parse error response as JSON:", responseText);
+          setSubmitStatus({ 
+            type: 'error', 
+            message: 'API returned invalid response. Please try again.',
+            details: `Status: ${protectionResponse.status}, Response: ${responseText.substring(0, 100)}...`
+          });
+          return;
+        }
+        console.log("🚫 API blocked the request:", protectionData);
         
         let userMessage = protectionData.error || 'Request blocked by security system';
         if (protectionData.type === 'rate_limit') {
@@ -87,7 +131,22 @@ const Contact = () => {
         return;
       }
 
-      console.log("✅ Arcjet protection passed, sending email...");
+      // Parse successful response
+      let protectionData;
+      try {
+        protectionData = JSON.parse(responseText);
+        console.log("✅ Protection API response:", protectionData);
+      } catch (e) {
+        console.error("❌ Failed to parse success response as JSON:", responseText);
+        setSubmitStatus({ 
+          type: 'error', 
+          message: 'API returned invalid response format.',
+          details: `Response: ${responseText.substring(0, 100)}...`
+        });
+        return;
+      }
+
+      console.log("✅ API protection passed, sending email...");
 
       // Step 2: Send email using client-side EmailJS (original working method)
       const result = await emailjs.send(
@@ -216,6 +275,15 @@ const Contact = () => {
             }`}
           >
             {loading ? "Sending..." : "Send Message"}
+          </button>
+
+          {/* Test API Button */}
+          <button
+            type='button'
+            onClick={testAPI}
+            className="py-2 px-6 rounded-lg outline-none w-fit text-white font-medium bg-blue-600 hover:bg-blue-700 transition-all duration-200"
+          >
+            🧪 Test API
           </button>
 
           {/* Enhanced Status Messages */}
