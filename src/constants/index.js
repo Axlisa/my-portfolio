@@ -7,9 +7,9 @@ import {
   menu,
   close,
   css,
-  gearXpert,
-  project2,
-  project3,
+  blackpink,
+  anh,
+  fms,
   mysql,
   express,
   laravel,
@@ -195,34 +195,9 @@ const educations = [
 // Replace testimonials with backend projects
 const projects = [
   {
-    name: "Forensic Management System (FMS)",
+    name: "Blackpink Fansite",
     description:
-      "Award-winning Final Year Project (2nd Place) - A comprehensive forensic case management system developed for Hospital Sungai Siput (U) Perak. Features include case tracking, evidence management, report generation, and secure data handling with role-based access control.",
-    tags: [
-      {
-        name: "laravel",
-        color: "red-text-gradient",
-      },
-      {
-        name: "php",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mysql",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "bootstrap",
-        color: "green-text-gradient",
-      },
-    ],
-    image: project2,
-    source_code_link: "https://github.com/Axlisa",
-  },
-  {
-    name: "Cinema Ticket Booking System",
-    description:
-      "Online cinema ticket booking system developed during secondary school using fundamental web technologies. Features include movie selection, seat booking interface, and basic payment simulation - showcasing early programming skills and passion for web development.",
+      "A comprehensive university test project showcasing foundational web development skills learned in HTML, CSS, and modern web technologies. This responsive fansite demonstrates clean UI design, interactive elements, and mobile-friendly layouts while celebrating the K-pop group Blackpink. Features include detailed member profiles, complete discography sections, modern CSS animations, smooth navigation systems, and responsive design principles optimized for seamless viewing across all devices and screen sizes.",
     tags: [
       {
         name: "html",
@@ -233,21 +208,46 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "scratch",
+        name: "javascript",
+        color: "yellow-text-gradient",
+      },
+      {
+        name: "responsive",
+        color: "green-text-gradient",
+      },
+    ],
+    image: blackpink,
+    source_code_link: "https://axlisa.github.io/fansite-blackpink/",
+  },
+  {
+    name: "AnH App & Tetriz Game Collection",
+    description:
+      "A dual-purpose application combining entertainment and utility features with modern programming techniques. The project includes a classic Tetris game implementation featuring advanced gameplay mechanics, dynamic scoring systems, and intuitive user controls, alongside additional app functionalities. Built to demonstrate game development skills, algorithmic thinking, user interface design, and interactive programming concepts using contemporary web technologies.",
+    tags: [
+      {
+        name: "javascript",
+        color: "yellow-text-gradient",
+      },
+      {
+        name: "game-dev",
         color: "pink-text-gradient",
       },
       {
-        name: "javascript",
-        color: "yellow-text-gradient",
+        name: "html5",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "blue-text-gradient",
       },
     ],
-    image: gearXpert,
-    source_code_link: "https://github.com/Axlisa",
+    image: anh,
+    source_code_link: "https://github.com/Axlisa/AnH-App-and-Tetriz-Game-App",
   },
   {
-    name: "Digital Literacy Workshop Platform",
+    name: "Forensic Management System (FMS)",
     description:
-      "Educational platform and workshop management system developed for conducting HTML workshops for primary and secondary school students. Includes interactive tutorials, progress tracking, and resource management for effective digital literacy education.",
+      "Award-winning Final Year Project (2nd Place) - A comprehensive forensic case management system developed for Hospital Sungai Siput (U) Perak using modern web technologies. Features include advanced case tracking, evidence management, detailed report generation, and secure data handling with role-based access control. The system streamlines forensic workflow processes, enhances data security, and provides intuitive interfaces for medical professionals and administrative staff with responsive design implementation.",
     tags: [
       {
         name: "html",
@@ -258,15 +258,15 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
+        name: "tailwind",
+        color: "green-text-gradient",
+      },
+      {
         name: "javascript",
         color: "yellow-text-gradient",
       },
-      {
-        name: "education",
-        color: "green-text-gradient",
-      },
     ],
-    image: project3,
+    image: fms,
     source_code_link: "https://github.com/Axlisa",
   },
 ];
